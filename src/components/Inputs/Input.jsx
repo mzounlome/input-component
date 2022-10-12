@@ -1,9 +1,17 @@
+import {
+  HelperText,
+  Icon,
+  InputDescription,
+  InputIndividual,
+  InputLabel,
+  InputSelf,
+} from "./inputdis-styles";
 import { MdLocalPhone, MdLock } from "react-icons/md";
 
 import React from "react";
-import { StyledInput } from "./style";
+import { StyledInput } from "./input-styles";
 
-const Input = ({
+export const Input = ({
   color,
   disabled,
   helperText,
@@ -11,22 +19,41 @@ const Input = ({
   endIcon = false,
   size,
   value,
-  hover,
-  focus,
-  icon,
+  multiline,
+  text,
 }) => {
-  console.log(startIcon);
-  console.log(icon);
   return (
     <div className="input-container">
-      <StyledInput
-        color={color}
-        size={size}
-        disabled={disabled}
-        startIcon={startIcon}
-        endIcon={endIcon}
-        icon={icon}
-      ></StyledInput>
+      <InputIndividual>
+        <InputDescription>{text ? text : "Default"} </InputDescription>
+        <InputLabel color={color}>Label</InputLabel>
+        <InputSelf>
+          {startIcon ? (
+            <Icon>
+              <MdLocalPhone />
+            </Icon>
+          ) : (
+            ""
+          )}
+          <StyledInput
+            color={color}
+            size={size}
+            disabled={disabled}
+          ></StyledInput>
+          {endIcon ? (
+            <Icon>
+              <MdLock />
+            </Icon>
+          ) : (
+            ""
+          )}
+        </InputSelf>
+        {helperText ? (
+          <HelperText color={color}>That's some interesting text</HelperText>
+        ) : (
+          ""
+        )}
+      </InputIndividual>
     </div>
   );
 };
