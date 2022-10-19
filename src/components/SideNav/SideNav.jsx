@@ -5,7 +5,7 @@ import {
   SideNavHeader,
   SideNavList,
   SideNavLogo,
-} from "./styles";
+} from "./sidenav-styles";
 
 import React from "react";
 
